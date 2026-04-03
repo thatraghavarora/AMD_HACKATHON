@@ -1,6 +1,10 @@
-import { Models } from "node-appwrite";
+export interface MockDocument {
+    $id: string;
+    $createdAt: string;
+    $updatedAt: string;
+}
 
-export interface Patient extends Models.Document {
+export interface Patient extends MockDocument {
     userId: string;
     name: string;
     email: string;
@@ -24,7 +28,7 @@ export interface Patient extends Models.Document {
     privacyConsent: boolean;
 }
 
-export interface Appointment extends Models.Document {
+export interface Appointment extends MockDocument {
     patient: Patient;
     schedule: Date;
     status: Status;

@@ -12,9 +12,9 @@ const StatCard = ({ type, count = 0, label, icon }: StatCardProps) => {
     return (
         <div
             className={clsx("stat-card", {
-                "bg-appointments": type === "appointments",
-                "bg-pending": type === "pending",
-                "bg-cancelled": type === "cancelled",
+                "bg-yellow-500": type === "appointments",
+                "bg-blue-500": type === "pending",
+                "bg-red-500": type === "cancelled",
             })}
         >
             <div className="flex items-center gap-4">
@@ -23,12 +23,12 @@ const StatCard = ({ type, count = 0, label, icon }: StatCardProps) => {
                     height={32}
                     width={32}
                     alt="appointments"
-                    className="size-8 w-fit"
+                    className="size-8 w-fit brightness-0 invert-0"
                 />
-                <h2 className="text-32-bold text-white">{count}</h2>
+                <h2 className="text-32-bold text-black">{count}</h2>
             </div>
 
-            <p className="text-14-regular">{label}</p>
+            <p className="text-18-bold text-black uppercase tracking-tight">{label}</p>
         </div>
     );
 }

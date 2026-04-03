@@ -1,13 +1,27 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import StatCard from "@/components/StatCard";
 import { columns } from "@/components/table/columns";
 import { DataTable } from "@/components/table/DataTable";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 import Image from "next/image";
 import Link from "next/link";
+import { initStorage } from "@/lib/storage";
 
+const AdminPage = () => {
+    const [appointments, setAppointments] = useState<any>(null);
 
-const AdminPage = async () => {
-    const appointments = await getRecentAppointmentList();
+    useEffect(() => {
+        initStorage();
+        const fetchAppointments = async () => {
+            const data = await getRecentAppointmentList();
+            setAppointments(data);
+        };
+        fetchAppointments();
+    }, []);
+
+    if (!appointments) return <div className="flex-center h-screen text-white">Loading Admin Dashboard...</div>;
 
     return (
         <div className="mx-auto flex max-w-7xl flex-col space-y-14">
@@ -60,4 +74,4 @@ const AdminPage = async () => {
     );
 }
 
-export default AdminPage;
+export default AdminPage;

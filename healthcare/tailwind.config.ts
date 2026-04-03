@@ -22,32 +22,53 @@ const config = {
         extend: {
             colors: {
                 green: {
-                    500: "#24AE7C",
+                    500: "#39FF14", // Neon Green
                     600: "#0D2A1F",
                 },
                 blue: {
-                    500: "#79B5EC",
+                    500: "#00F0FF", // Cyan
                     600: "#152432",
                 },
                 red: {
-                    500: "#F37877",
+                    500: "#FF3131", // Bright Red
                     600: "#3E1716",
-                    700: "#F24E43",
+                    700: "#FF0000",
+                },
+                yellow: {
+                    500: "#FFF01F", // Electric Yellow
+                },
+                pink: {
+                    500: "#FF00FF", // Magenta
                 },
                 light: {
-                    200: "#E8E9E9",
+                    200: "#FFFFFF",
                 },
                 dark: {
-                    200: "#0D0F10",
+                    200: "#000000",
                     300: "#131619",
                     400: "#1A1D21",
                     500: "#363A3D",
                     600: "#76828D",
                     700: "#ABB8C4",
                 },
+                neo: {
+                    bg: "#F4F4F0",
+                    primary: "#FFD000",
+                    secondary: "#FF3399",
+                    accent: "#00C1FF",
+                }
+            },
+            boxShadow: {
+                'neo': '4px 4px 0px 0px rgba(0,0,0,1)',
+                'neo-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
+            },
+            borderWidth: {
+                '3': '3px',
+                '4': '4px',
+                '8': '8px',
             },
             fontFamily: {
-                sans: ["var(--font-sans)", ...fontFamily.sans],
+                sans: ["Plus Jakarta Sans", ...fontFamily.sans],
             },
             backgroundImage: {
                 appointments: "url('/assets/images/appointments-bg.png')",

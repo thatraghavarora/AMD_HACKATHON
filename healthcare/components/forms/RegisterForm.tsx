@@ -108,14 +108,14 @@ const RegisterForm = ({ user }: { user: User }) => {
                 className="space-y-12 flex-1"
             >
                 <section className="space-y-4">
-                    <h1 className="header">Welcome 👋</h1>
-                    <p className="text-dark-700">Let us know more about yourself.</p>
+                    <h1 className="header font-black uppercase text-black">Welcome 👋</h1>
+                    <p className="text-black font-bold">Let us know more about yourself.</p>
                 </section>
 
 
                 <section className="space-y-6">
                     <div className="mb-9 space-y-1">
-                        <h2 className="sub-header">Personal Information</h2>
+                        <h2 className="sub-header font-black text-neo-secondary uppercase">Personal Information</h2>
                     </div>
 
                     {/* NAME */}
@@ -227,7 +227,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
                 <section className="space-y-6">
                     <div className="mb-9 space-y-1">
-                        <h2 className="sub-header">Medical Information</h2>
+                        <h2 className="sub-header font-black text-neo-accent uppercase">Medical Information</h2>
                     </div>
 
                     {/* PRIMARY CARE PHYSICIAN */}
@@ -246,9 +246,9 @@ const RegisterForm = ({ user }: { user: User }) => {
                                         width={32}
                                         height={32}
                                         alt="doctor"
-                                        className="rounded-full border border-dark-500"
+                                        className="rounded-none border-2 border-black"
                                     />
-                                    <p>{doctor.name}</p>
+                                    <p className="font-bold">{doctor.name}</p>
                                 </div>
                             </SelectItem>
                         ))}

@@ -4,6 +4,9 @@
 
 /* ========================================== TAILWIND STYLES */
 @layer base {
+    body {
+        @apply bg-[#F4F4F0] text-black;
+    }
 
     /* Remove scrollbar */
     .remove-scrollbar::-webkit-scrollbar {
@@ -20,42 +23,25 @@
         background: transparent;
         border-radius: 0px;
     }
-
-    .remove-scrollbar::-webkit-scrollbar-thumb:hover {
-        /* background: #1e2238; */
-        background: transparent;
-    }
 }
 
 @layer utilities {
 
     /* ===== UTILITIES */
     .sidebar {
-        @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
-    }
-
-    .left-sidebar {
-        @apply hidden lg:flex;
-    }
-
-    .right-sidebar {
-        @apply hidden xl:flex;
-    }
-
-    .clip-text {
-        @apply bg-clip-text text-transparent;
+        @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-white border-r-4 border-black px-7 py-10;
     }
 
     .bg-image {
-        @apply bg-black-900 bg-light-rays bg-cover bg-no-repeat;
+        @apply bg-neo-bg bg-cover bg-no-repeat;
     }
 
     .header {
-        @apply text-32-bold md:text-36-bold;
+        @apply text-32-bold md:text-36-bold font-black uppercase tracking-tighter;
     }
 
     .sub-header {
-        @apply text-18-bold md:text-24-bold;
+        @apply text-18-bold md:text-24-bold font-bold;
     }
 
     .container {
@@ -63,15 +49,15 @@
     }
 
     .sub-container {
-        @apply mx-auto flex size-full flex-col py-10;
+        @apply mx-auto flex size-full flex-col py-10 max-w-[800px];
     }
 
     .side-img {
-        @apply hidden h-full object-cover md:block;
+        @apply hidden h-full object-cover md:block grayscale contrast-125;
     }
 
     .copyright {
-        @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
+        @apply text-14-medium justify-items-end text-center text-black xl:text-left;
     }
 
     /* ==== SUCCESS */
@@ -80,12 +66,12 @@
     }
 
     .request-details {
-        @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md:w-fit md:flex-row;
+        @apply flex w-full flex-col items-center gap-8 border-4 border-black bg-white p-8 shadow-neo md:w-fit md:flex-row;
     }
 
     /* ===== ADMIN */
     .admin-header {
-        @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
+        @apply sticky top-3 z-20 mx-3 flex items-center justify-between border-4 border-black bg-neo-primary px-[5%] py-5 shadow-neo xl:px-12;
     }
 
     .admin-main {
@@ -98,255 +84,126 @@
 
     /* ==== FORM */
     .radio-group {
-        @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+        @apply flex h-full flex-1 items-center gap-2 border-4 border-black bg-white p-3 shadow-neo;
     }
 
     .checkbox-label {
-        @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+        @apply cursor-pointer text-sm font-bold text-black peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
     }
 
     /* ==== File Upload */
     .file-upload {
-        @apply text-12-regular flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
-    }
-
-    .file-upload_label {
-        @apply flex flex-col justify-center gap-2 text-center text-dark-600;
+        @apply text-xs font-bold flex cursor-pointer flex-col items-center justify-center gap-3 border-4 border-black bg-white p-5 shadow-neo;
     }
 
     /* ==== Stat Card */
     .stat-card {
-        @apply flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg;
+        @apply flex flex-1 flex-col gap-6 border-4 border-black p-6 shadow-neo-lg bg-white hover:translate-x-1 hover:translate-y-1 hover:shadow-neo transition-all;
     }
 
     /* ==== Status Badge */
     .status-badge {
-        @apply flex w-fit items-center gap-2 rounded-full px-4 py-2;
+        @apply flex w-fit items-center gap-2 border-2 border-black px-4 py-2 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
     }
 
     /* Data Table */
     .data-table {
-        @apply z-10 w-full overflow-hidden rounded-lg border border-dark-400 shadow-lg;
+        @apply z-10 w-full overflow-hidden border-4 border-black bg-white shadow-neo;
     }
 
     .table-actions {
-        @apply flex w-full items-center justify-between space-x-2 p-4;
-    }
-
-    /* ===== ALIGNMENTS */
-    .flex-center {
-        @apply flex items-center justify-center;
-    }
-
-    .flex-between {
-        @apply flex items-center justify-between;
+        @apply flex w-full items-center justify-between space-x-2 p-4 border-t-4 border-black;
     }
 
     /* ===== TYPOGRAPHY */
-    .text-36-bold {
-        @apply text-[36px] leading-[40px] font-bold;
-    }
-
-    .text-24-bold {
-        @apply text-[24px] leading-[28px] font-bold;
-    }
-
-    .text-32-bold {
-        @apply text-[32px] leading-[36px] font-bold;
-    }
-
-    .text-18-bold {
-        @apply text-[18px] leading-[24px] font-bold;
-    }
-
-    .text-16-semibold {
-        @apply text-[16px] leading-[20px] font-semibold;
-    }
-
-    .text-16-regular {
-        @apply text-[16px] leading-[20px] font-normal;
-    }
-
-    .text-14-medium {
-        @apply text-[14px] leading-[18px] font-medium;
-    }
-
-    .text-14-regular {
-        @apply text-[14px] leading-[18px] font-normal;
-    }
-
-    .text-12-regular {
-        @apply text-[12px] leading-[16px] font-normal;
-    }
-
-    .text-12-semibold {
-        @apply text-[12px] leading-[16px] font-semibold;
-    }
+    .text-36-bold { @apply text-[36px] leading-[40px] font-black; }
+    .text-24-bold { @apply text-[24px] leading-[28px] font-black; }
+    .text-32-bold { @apply text-[32px] leading-[36px] font-black; }
+    .text-18-bold { @apply text-[18px] leading-[24px] font-bold; }
+    .text-16-semibold { @apply text-[16px] leading-[20px] font-bold; }
+    .text-14-medium { @apply text-[14px] leading-[18px] font-bold; }
 
     /* =====  SHADCN OVERRIDES */
     .shad-primary-btn {
-        @apply bg-green-500 text-white !important;
+        @apply bg-neo-primary text-black border-4 border-black shadow-neo font-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all !important;
     }
 
     .shad-danger-btn {
-        @apply bg-red-700 text-white !important;
+        @apply bg-red-500 text-white border-4 border-black shadow-neo font-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all !important;
     }
 
     .shad-gray-btn {
-        @apply border border-dark-500 cursor-pointer bg-dark-400 text-white !important;
+        @apply border-4 border-black cursor-pointer bg-white text-black shadow-neo font-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all !important;
     }
 
     .shad-input-label {
-        @apply text-14-medium text-dark-700 !important;
+        @apply text-14-medium text-black uppercase !important;
     }
 
     .shad-input {
-        @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-    }
-
-    .shad-input-icon {
-        @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+        @apply bg-white placeholder:text-gray-400 border-4 border-black h-12 focus-visible:ring-0 focus-visible:ring-offset-0 font-bold !important;
     }
 
     .shad-textArea {
-        @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-    }
-
-    .shad-combobox-item {
-        @apply data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 !important;
-    }
-
-    .shad-combobox-trigger {
-        @apply h-11 !important;
+        @apply bg-white placeholder:text-gray-400 border-4 border-black focus-visible:ring-0 focus-visible:ring-offset-0 font-bold !important;
     }
 
     .shad-select-trigger {
-        @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
-    }
-
-    .shad-select-content {
-        @apply bg-dark-400 border-dark-500 !important;
+        @apply bg-white border-4 border-black h-12 focus:ring-0 focus:ring-offset-0 font-bold !important;
     }
 
     .shad-dialog {
-        @apply bg-dark-400 border-dark-500 !important;
-    }
-
-    .shad-dialog button {
-        @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+        @apply bg-white border-8 border-black shadow-neo-lg !important;
     }
 
     .shad-error {
-        @apply text-red-400 !important;
+        @apply text-red-600 font-bold !important;
     }
 
     .shad-table {
-        @apply rounded-lg overflow-hidden !important;
+        @apply border-collapse !important;
     }
 
     .shad-table-row-header {
-        @apply border-b border-dark-400 text-light-200 hover:bg-transparent !important;
+        @apply border-b-4 border-black bg-neo-accent text-black font-black uppercase !important;
     }
 
     .shad-table-row {
-        @apply border-b border-dark-400 text-light-200 !important;
-    }
-
-    .shad-otp {
-        @apply w-full flex justify-between !important;
+        @apply border-b-2 border-black text-black font-bold hover:bg-gray-100 !important;
     }
 
     .shad-otp-slot {
-        @apply text-36-bold justify-center flex border border-dark-500 rounded-lg size-16 gap-4 !important;
-    }
-
-    .shad-alert-dialog {
-        @apply space-y-5 bg-dark-400 border-dark-500 outline-none !important;
-    }
-
-    .shad-sheet-content button {
-        @apply top-2 focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
-    }
-
-    /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
-    .input-phone {
-        @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-dark-600 border-dark-500 !important;
-    }
-
-    /* =====  REACT DATE PICKER OVERRIDES */
-    .date-picker {
-        @apply overflow-hidden border-transparent w-full placeholder:text-dark-600 h-11 text-14-medium rounded-md px-3 outline-none !important;
+        @apply text-36-bold justify-center flex border-4 border-black bg-white size-16 gap-4 shadow-neo !important;
     }
 }
 
 /* =====  REACT-DATEPICKER OVERRIDES */
-.react-datepicker-wrapper.date-picker {
-    display: flex;
-    align-items: center;
-}
-
 .react-datepicker,
-.react-datepicker__time,
 .react-datepicker__header,
 .react-datepicker__current-month,
 .react-datepicker__day-name,
-.react-datepicker__day,
-.react-datepicker-time__header {
-    background-color: #1a1d21 !important;
-    border-color: #363a3d !important;
-    color: #abb8c4 !important;
+.react-datepicker__day {
+    background-color: #fff !important;
+    border: 2px solid #000 !important;
+    color: #000 !important;
+    font-weight: bold !important;
 }
 
-.react-datepicker__current-month,
-.react-datepicker__day-name,
-.react-datepicker-time__header {
-    color: #ffffff !important;
-}
-
-.react-datepicker__triangle {
-    fill: #1a1d21 !important;
-    color: #1a1d21 !important;
-    stroke: #1a1d21 !important;
-}
-
-.react-datepicker__time-list-item:hover {
-    background-color: #363a3d !important;
-}
-
-.react-datepicker__input-container input {
-    background-color: #1a1d21 !important;
-    width: 100%;
-    outline: none;
+.react-datepicker__header {
+    border-bottom: 4px solid #000 !important;
+    background-color: #FFD000 !important;
 }
 
 .react-datepicker__day--selected {
-    background-color: #24ae7c !important;
-    color: #ffffff !important;
-    border-radius: 4px;
+    background-color: #00C1FF !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
 }
 
-.react-datepicker__time-list-item--selected {
-    background-color: #24ae7c !important;
-}
-
-.react-datepicker__time-container {
-    border-left: 1px solid #363a3d !important;
-}
-
-.react-datepicker__time-list-item {
-    display: flex !important;
-    align-items: center !important;
-}
-
-/* =====  REACT PHONE NUMBER INPUT OVERRIDES */
 .PhoneInputInput {
     outline: none;
-    margin-left: 4px;
-    background: #1a1d21;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.PhoneInputInput::placeholder {
-    color: #1a1d21;
-}
+    margin-left: 8px;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 700;
+}

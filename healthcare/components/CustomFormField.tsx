@@ -41,21 +41,21 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     switch (fieldType) {
         case FormFieldType.INPUT:
             return (
-                <div className="flex rounded-md border border-dark-500 bg-dark-400">
+                <div className="flex rounded-none border-4 border-black bg-white shadow-neo">
                     {iconSrc && (
                         <Image
                             src={iconSrc}
                             height={24}
                             width={24}
                             alt={iconAlt || "icon"}
-                            className="ml-2"
+                            className="ml-2 brightness-0"
                         />
                     )}
                     <FormControl>
                         <Input
                             placeholder={placeholder}
                             {...field}
-                            className="shad-input border-0"
+                            className="shad-input border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-dark-600/50"
                         />
                     </FormControl>
                 </div>
@@ -71,20 +71,20 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                         withCountryCallingCode
                         value={field.value as E164Number | undefined}
                         onChange={field.onChange}
-                        className="input-phone"
+                        className="input-phone border-4 border-black bg-white shadow-neo px-3 h-11"
                     />
                 </FormControl>
             );
 
         case FormFieldType.DATE_PICKER:
             return (
-                <div className="flex rounded-md border border-dark-500 bg-dark-400">
+                <div className="flex rounded-none border-4 border-black bg-white shadow-neo">
                     <Image
                         src="/assets/icons/calendar.svg"
                         height={24}
                         width={24}
                         alt="user"
-                        className="ml-2"
+                        className="ml-2 brightness-0"
                     />
                     <FormControl>
                         <DatePicker
@@ -94,6 +94,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                             showTimeSelect={showTimeSelect ?? false}
                             timeInputLabel="Time:"
                             wrapperClassName="date-picker"
+                            className="bg-transparent border-0 outline-none text-black h-11 px-3 w-full font-bold"
                         />
                     </FormControl>
                 </div>
@@ -104,11 +105,11 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                 <FormControl>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                            <SelectTrigger className="shad-select-trigger">
-                                <SelectValue placeholder={placeholder} />
+                            <SelectTrigger className="shad-select-trigger border-4 border-black bg-white shadow-neo rounded-none h-11">
+                                <SelectValue placeholder={placeholder} className="placeholder:text-dark-600/50" />
                             </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="shad-select-content">
+                        <SelectContent className="shad-select-content border-4 border-black bg-white rounded-none shadow-neo-lg">
                             {props.children}
                         </SelectContent>
                     </Select>
@@ -121,7 +122,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                     <Textarea
                         placeholder={props.placeholder}
                         {...field}
-                        className="shad-textArea"
+                        className="shad-textArea border-4 border-black bg-white shadow-neo rounded-none"
                         disabled={props.disabled}
                     />
                 </FormControl>
@@ -135,8 +136,9 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                             id={props.name}
                             checked={field.value}
                             onCheckedChange={field.onChange}
+                            className="border-3 border-black size-6 data-[state=checked]:bg-neo-secondary rounded-none"
                         />
-                        <label htmlFor={props.name} className="checkbox-label">
+                        <label htmlFor={props.name} className="checkbox-label font-bold text-black cursor-pointer">
                             {props.label}
                         </label>
                     </div>
@@ -164,13 +166,12 @@ const CustomFormField = (props: CustomProps) => {
             render={({ field }) => (
                 <FormItem className="flex-1">
                     {fieldType !== FormFieldType.CHECKBOX && label && (
-                        <FormLabel>{label}</FormLabel>
+                        <FormLabel className="font-black text-black uppercase tracking-wider">{label}</FormLabel>
                     )}
 
                     <RenderField field={field} props={props} />
 
-
-                    <FormMessage className="shad-error" />
+                    <FormMessage className="shad-error font-bold" />
                 </FormItem>
             )}
         />
